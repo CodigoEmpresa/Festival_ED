@@ -77,8 +77,8 @@ class EquipoController extends BaseController
             $equipo = new Equipo([]);
             $equipo = $this->store($equipo, $request);
 
-             Mail::send('email2', ['user' => $request->input('email'),'equipo' => $equipo,'link'=> 'https://www.idrd.gov.co/SIM/COPACLARO_2017/welcome/'.url_segura('encapsular',$equipo['id'])], function ($m) use ($request)  {
-                $m->from('no-reply@idrd.gov.co', 'Registro incompleto Copa claro haga click para continuar inscripción');
+             Mail::send('email2', ['user' => $request->input('email'),'equipo' => $equipo,'link'=> 'https://www.idrd.gov.co/SIM/Festival_ED/welcome/'.url_segura('encapsular',$equipo['id'])], function ($m) use ($request)  {
+                $m->from('no-reply@idrd.gov.co', 'Registro incompleto Festivales escuelas haga click para continuar inscripción');
                 $m->to($request->input('email'), $request->input('nombre'))->subject('Registro incompleto!');
             });
 
@@ -143,8 +143,8 @@ class EquipoController extends BaseController
         $this->store($equipo, $request);
         $enc = url_segura('encapsular', $request->input('id'));
         Mail::send('email', ['user' => $request->input('email'),'equipo' => $equipo], function ($m) use ($request)  {
-            $m->from('no-reply@idrd.gov.co', 'Registro Exitoso Copa claro');
-            $m->to($request->input('email'), $request->input('nombre'))->subject('Registro Exitoso Copa claro!');
+            $m->from('no-reply@idrd.gov.co', 'Registro Exitoso Festival escuelas deportivas');
+            $m->to($request->input('email'), $request->input('nombre'))->subject('Registro Exitoso Festival escuelas deportivas!');
         });
         $equipo->estado = 1;
         $equipo->save();
@@ -174,11 +174,11 @@ class EquipoController extends BaseController
             return response()->json(['estado' =>false, 'errors' => $validator->errors()]);
 
         $tipo =  Equipo::select('id_categoria_deporte')->find($request->input('id'));
-        if($tipo->id_categoria_deporte==1 && intval($request->Id_Genero) !=1){
+        if($tipo->id_categoria_deporte==9 && intval($request->Id_Genero) !=1){
             return response()->json(['estado' => 'repetido', 'errors' => 'El participante no tiene el genero nesesario para esta categoria']);
         }
 
-        if($tipo->id_categoria_deporte==2 &&  intval($request->Id_Genero) !=2){
+        if($tipo->id_categoria_deporte==10 &&  intval($request->Id_Genero) !=2){
             return response()->json(['estado' => 'repetido', 'errors' => 'La participante no tiene el genero nesesario para esta categoria']);
         }
 
@@ -193,10 +193,13 @@ class EquipoController extends BaseController
 
             $categoria = $limites->categoria_deporte['id_categoria'];
             $edad_h = Carbon::createFromFormat('Y-m-d',$request->Fecha_Nacimiento)->age;
-            if($categoria==1 && ($edad_h <12 || $edad_h >15)){
+            if($categoria==1 && ($edad_h <11 || $edad_h >12)){
                 return response()->json(['estado' => 'repetido', 'errors' => 'El participante no cumple con la edad para esta categoria solo tiene: '.$edad_h.' años']);
             }
-            if($categoria==2 && ($edad_h <13 || $edad_h >22)){
+            if($categoria==2 && ($edad_h <11 || $edad_h >12)){
+                return response()->json(['estado' => 'repetido', 'errors' => 'El participante no cumple con la edad para esta categoria solo tiene: '.$edad_h.' años']);
+            }
+            if($categoria==3 && ($edad_h <11 || $edad_h >13)){
                 return response()->json(['estado' => 'repetido', 'errors' => 'El participante no cumple con la edad para esta categoria solo tiene: '.$edad_h.' años']);
             }
             
@@ -204,6 +207,9 @@ class EquipoController extends BaseController
                 return response()->json(['estado' => 'repetido', 'errors' => 'Limite de participante superado']);
             }
             if($categoria==2 && $mujeres >= $maximo_jugadores){
+                return response()->json(['estado' => 'repetido', 'errors' => 'Limite de participante superado']);
+            }
+            if($categoria==3 && $mujeres >= $maximo_jugadores){
                 return response()->json(['estado' => 'repetido', 'errors' => 'Limite de participante superado']);
             }
 
