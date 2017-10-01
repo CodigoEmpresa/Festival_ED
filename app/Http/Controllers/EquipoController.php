@@ -62,17 +62,18 @@ class EquipoController extends BaseController
             $limites = Categoria_deporte::with('deporte')->find($request->id_categoria_deporte);
             $limite = $limites->deporte['limite'];
             $actual_equipos_cat =  DB::table('categoria_limite')->get();
-           
-/*
+
+            /*
             if($actual_equipos_cat[0]->total >$limite)
-            {   
+            {
                 $validator->errors()->add('cantidad de equipos superado en esta categoria');
                 $enc = url_segura('encapsular', $request->input('id'));
                 return redirect('/welcome')
                             ->withErrors($validator)
                             ->withInput()
                             ->with(['status' => 'error']);
-            } */
+            }
+            */
         
             $equipo = new Equipo([]);
             $equipo = $this->store($equipo, $request);
@@ -118,6 +119,8 @@ class EquipoController extends BaseController
         $maximo_jugadores = $limites->categoria_deporte->deporte['maximo_jugadores'];
         $minimo_sexo = $limites->categoria_deporte->deporte['minimo_sexo'];
 
+
+
         if(($mujeres+$hombres) < $minimo_jugadores){
 
            $validator->errors()->add('Participantes','El minimo de participante es '.$minimo_jugadores);
@@ -137,6 +140,18 @@ class EquipoController extends BaseController
                         ->withInput()
                         ->with(['status' => 'error']);
         }
+
+
+
+        if($categoria==1 && ($mujeres< $minimo_sexo  || $hombres< $minimo_sexo )){
+            $validator->errors()->add('Participantes','El equipo debe contener '.$minimo_sexo.' mujeres y  '.$minimo_sexo.'  hombres minimo');
+            $enc = url_segura('encapsular', $request->input('id'));
+            return redirect('/welcome/'.$enc)
+                ->withErrors($validator)
+                ->withInput()
+                ->with(['status' => 'error']);
+        }
+
               
         $equipo = Equipo::find($request->input('id'));
        
@@ -187,7 +202,7 @@ class EquipoController extends BaseController
         $limite = $limites->categoria_deporte->deporte['limite'];
         $minimo_jugadores = $limites->categoria_deporte->deporte['minimo_jugadores'];
         $maximo_jugadores = $limites->categoria_deporte->deporte['maximo_jugadores'];
-       // $minimo_sexo = $limites->categoria_deporte->deporte['minimo_sexo'];
+        $minimo_sexo = $limites->categoria_deporte->deporte['minimo_sexo'];
 
         
 
@@ -203,7 +218,7 @@ class EquipoController extends BaseController
                 return response()->json(['estado' => 'repetido', 'errors' => 'El participante no cumple con la edad para esta categoria solo tiene: '.$edad_h.' años']);
             }
             
-            if($categoria==1 && $hombres >= $maximo_jugadores){
+            if($categoria==1 && $mujeres+$hombres >= $maximo_jugadores){
                 return response()->json(['estado' => 'repetido', 'errors' => 'Limite de participante superado']);
             }
             if($categoria==2 && $mujeres >= $maximo_jugadores){
@@ -212,6 +227,8 @@ class EquipoController extends BaseController
             if($categoria==3 && $mujeres >= $maximo_jugadores){
                 return response()->json(['estado' => 'repetido', 'errors' => 'Limite de participante superado']);
             }
+
+
 
         /*
         if(($mujeres+$hombres) >= $maximo_jugadores){

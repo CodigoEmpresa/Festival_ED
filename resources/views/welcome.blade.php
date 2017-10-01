@@ -164,7 +164,7 @@ if (count($matches)>1){
                         </div>
         				<div class="col-md-12 form-group {{ $errors->has('email') ? 'has-error' : '' }}">
         					<label for="">E-mail es nesesario que sea GMAIL</label>
-        					<input type="email" name="email" required class="form-control" value="{{ $formulario ? $formulario['email'] : old('email') }}">
+        					<input type="email" name="email" required class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@gmail.com" value="{{ $formulario ? $formulario['email'] : old('email') }}">
         				</div>
         				<div class="col-md-6 form-group {{ $errors->has('telefono') ? 'has-error' : '' }}">
         					<label for="">Teléfono</label>
@@ -245,7 +245,7 @@ if (count($matches)>1){
             			<div class="row">
             				<div class="col-xs-12">
             					<div class="alert alert-warning" role="alert">
-        							De acuerdo a la Ley 1581 de 2012 para la protección de datos personales, cuyo objeto es desarrollar el derecho constitucional que tienen todas las personas a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ellas en bases de datos o archivos, y los demás derechos, libertades y garantías constitucionales a que se refiere el artículo 15 de la Constitución Política; así como el derecho a la información consagrado en el artículo 20 de la misma. Autorizo para que mis datos personales, fotografías y videos puedan ser publicados en la página web del Instituto Distrital de Recreación y Deporte IDRD; en lo relacionado con los Encuentros Deportivos interbarrios {{date('Y')}}, excluyendo a la entidad de cualquier responsabilidad derivada de alguna demanda por situación de publicación de datos personales. Así mismo doy mi consentimiento para mi participación de las diferentes actividades programadas en el marco de realización de la Copa Claro Fútbol {{date('Y')}} y eximo al Instituto Distrital de Recreación y Deporte IDRD  de responsabilidades que van más allá de la atención en primeros auxilios y notificación a mi EPS. Adicionalmente doy constancia de que leí y entendí el contenido del presente documento..
+        							De acuerdo a la Ley 1581 de 2012 para la protección de datos personales, cuyo objeto es desarrollar el derecho constitucional que tienen todas las personas a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ellas en bases de datos o archivos, y los demás derechos, libertades y garantías constitucionales a que se refiere el artículo 15 de la Constitución Política; así como el derecho a la información consagrado en el artículo 20 de la misma. Autorizo para que mis datos personales, fotografías y videos puedan ser publicados en la página web del Instituto Distrital de Recreación y Deporte IDRD; en lo relacionado con los Festival escuelas deportivas {{date('Y')}}, excluyendo a la entidad de cualquier responsabilidad derivada de alguna demanda por situación de publicación de datos personales. Así mismo doy mi consentimiento para mi participación de las diferentes actividades programadas en el marco de realización de la Festival escuelas deportivas {{date('Y')}} y eximo al Instituto Distrital de Recreación y Deporte IDRD  de responsabilidades que van más allá de la atención en primeros auxilios y notificación a mi EPS. Adicionalmente doy constancia de que leí y entendí el contenido del presente documento..
         							<br>
         							<br>
         							<div class="row">
