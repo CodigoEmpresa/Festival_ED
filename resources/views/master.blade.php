@@ -20,8 +20,8 @@
 
       @section('script')
           <script src="{{ asset('public/Js/jquery.js') }}"></script>
-          <script src="{{ asset('public/Js/jquery-ui.js') }}"></script>
-          <script src="{{ asset('public/Js/bootstrap.min.js') }}"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.12/jquery.datetimepicker.full.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
           <script src="{{ asset('public/Js/main.js') }}"></script>
           <script src="{{ asset('public/Js/alertify.js') }}"></script>
       @show
@@ -37,7 +37,7 @@
           <div class="page-header" id="banner">
             <div class="row">
               <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Copa Claro <span class="text-default">{{ date('Y') }}</span></h1>
+                <h1>Festival Escuelas Deportivas <span class="text-default">{{ date('Y') }}</span></h1>
                 <p class="lead"><h4>Formulario de inscripción</h4></p>
               </div>
               <div class="col-lg-4 col-md-5 col-sm-6">

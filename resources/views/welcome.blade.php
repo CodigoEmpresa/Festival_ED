@@ -1,8 +1,8 @@
 @extends('master-formularios')
 @section('script')
 @parent
-     <script src="{{ asset('public/Js/formulario/equipo.js?n=1') }}"></script>
-     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script src="{{ asset('public/Js/formulario/equipo.js?n=24') }}"></script>
+     
 @stop
 @section('content')
 
@@ -103,7 +103,7 @@ if (count($matches)>1){
                           <div class="col-xs-12">
                             <div class="row">
                                 <div class="col-md-12 form-group {{ $errors->has('id_categoria_deporte') ? 'has-error' : '' }}">
-                                    <label for="">Categoria:</label>
+                                    <label for="">Categoría:</label>
                                     <select name="id_categoria_deporte" id="" class="form-control" data-value="{{ $formulario ? $formulario['id_categoria_deporte'] : old('id_categoria_deporte') }}">
                                         <option value="">Seleccionar</option>
                                         @foreach ($Categoria_deporte as $categoria)
@@ -377,19 +377,12 @@ if (count($matches)>1){
                                 <input type="text" name="Fecha_Nacimiento" data-role="datepicker_limite" id="Fecha_Nacimiento" class="form-control">
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12 col-md-6" style="display:none">
                             <div class="form-group">
-                                <label class="control-label" for="Id_Genero">* Talla</label>
+                                <label class="control-label" style="display:none" for="Id_Genero">* Talla</label>
                                     
-                                       <select class="form-control" name="Talla">
-                                            <option value="XXS">XXS</option> 
-                                            <option value="XS">XS</option> 
-                                            <option value="S">S</option> 
-                                            <option value="M">M</option> 
-                                            <option value="L">L</option> 
-                                            <option value="XL">XL</option> 
-                                            <option value="XXL">XXL</option>   
-                                       </select>
+                                       <input type="hidden"class="form-control" name="Talla" value="S">
+                                       
                              </div>
                         </div>
                         <div class="col-xs-12 col-md-6">

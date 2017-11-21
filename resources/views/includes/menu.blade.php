@@ -14,10 +14,10 @@
 				<ul class="nav navbar-nav">
 				 	
 		            	<li class="{{ $seccion && ($seccion == 'Formulario' || $seccion == 'Busqueda') ? 'active' : '' }}">
-											<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Copa claro 2017<span class="caret"></span></a>
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Festival Escuelas Deportivas<span class="caret"></span></a>
 											<ul class="dropdown-menu" aria-labelledby="themes">
 												<li class="{{ $seccion && $seccion == 'Formulario' ? 'active' : '' }}"><a href="{{ url('/welcome') }}">Formulario de inscripción</a></li>
-												<li class="{{ $seccion && $seccion == 'Busqueda' ? 'active' : '' }}"><a href="{{ url('/buscar') }}">Busqueda de equipos</a></li>
+												<li class="{{ $seccion && $seccion == 'Busqueda' ? 'active' : '' }}"><a href="{{ url('/buscar') }}">Búsqueda de equipos</a></li>
 												<li class="{{ $seccion && $seccion == 'Busqueda' ? 'active' : '' }}"><a target="_blank" href="{{ url('/reporte') }}">Reporte inscritos</a></li>
 												<li class="{{ $seccion && $seccion == 'Busqueda' ? 'active' : '' }}"><a  target="_blank" href="{{ url('/reporte_equipos') }}">Reporte equipos</a></li>
 											</ul>

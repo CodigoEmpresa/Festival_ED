@@ -24,20 +24,26 @@ $(function()
 		$('select[name="Talla"').val(data['talla']);
 		$('input[name="Id_Persona"').val(data['Id_Persona']);
 		$('select[name="rh"').val(typeof data['rh'] == 'undefined' ? '' : data['rh']);
-		if($('input[name="id_categoria_deporte"]').val() == 1){
-			$('input[data-role="datepicker_limite"]').datepicker({
-			dateFormat: 'yy-mm-dd',
-			yearRange: "-15:-13",
-			changeMonth: true,
-			changeYear: true,
+		if($('input[name="id_categoria_deporte"]').val() == 8){
+			$('#Fecha_Nacimiento').datepicker({
+			format: 'yyyy-mm-dd',
+			startDate: '-12y',
+    endDate: '-11y'
+
 			});
 		}
-		if($('input[name="id_categoria_deporte"]').val() == 2){
-			$('input[data-role="datepicker_limite"]').datepicker({
-			dateFormat: 'yy-mm-dd',
-			yearRange: "-22:-14",
-			changeMonth: true,
-			changeYear: true,
+		if($('input[name="id_categoria_deporte"]').val() == 9){
+			$('#Fecha_Nacimiento').datepicker({
+			format: 'yyyy-mm-dd',
+			startDate: '-12y',
+    endDate: '-11y'
+			});
+		}
+		if($('input[name="id_categoria_deporte"]').val() == 10){
+			$('#Fecha_Nacimiento').datepicker({
+			format: 'yyyy-mm-dd',
+			startDate: '-13y',
+    endDate: '-11y'
 			});
 		}
 		$('#modal_form_persona').modal('show');
