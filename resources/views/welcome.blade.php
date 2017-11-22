@@ -1,7 +1,7 @@
 @extends('master-formularios')
 @section('script')
 @parent
-     <script src="{{ asset('public/Js/formulario/equipo.js?n=24') }}"></script>
+     <script src="{{ asset('public/Js/formulario/equipo.js?n=26') }}"></script>
      
 @stop
 @section('content')
@@ -163,7 +163,7 @@ if (count($matches)>1){
                             <input type="text" name="asistente" value="{{ $formulario ? $formulario['asistente'] : old('asistente') }}" class="form-control">
                         </div>
         				<div class="col-md-12 form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-        					<label for="">E-mail es nesesario que sea GMAIL</label>
+        					<label for="">E-mail(Es posible que el correo de confirmación se encuentre en el spam)</label>
         					<input type="email" name="email" required class="form-control" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@gmail.com" value="{{ $formulario ? $formulario['email'] : old('email') }}">
         				</div>
         				<div class="col-md-6 form-group {{ $errors->has('telefono') ? 'has-error' : '' }}">

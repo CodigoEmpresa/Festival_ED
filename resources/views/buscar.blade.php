@@ -44,7 +44,7 @@
                     <div class="col-md-3 estado"><strong>Estado:</strong> <span class="localidad">{{ ($equipo->estado==1)?'Equipo Completo':'No cumple'}}</span></div>
                     <div class="col-md-12">
                       <br>
-                      <a class="btn btn-xs btn-default" href="{{ url('/welcome/'.url_segura('encapsular',$equipo['id'])) }}">Editar</a> <a target="_blank" class="btn btn-xs btn-default" href="{{ url('/carnet_equipo/'.url_segura('encapsular',$equipo['id'])) }}">Carnets equipo</a>
+                      <a class="btn btn-xs btn-default" target="_blank" href="{{ url('/welcome/'.url_segura('encapsular',$equipo['id'])) }}">Editar</a> 
                     </div>
                   </div>
     				    </li>

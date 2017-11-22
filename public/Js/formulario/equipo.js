@@ -36,7 +36,7 @@ $(function()
 			$('#Fecha_Nacimiento').datepicker({
 			format: 'yyyy-mm-dd',
 			startDate: '-12y',
-    endDate: '-11y'
+    endDate: '-10y'
 			});
 		}
 		if($('input[name="id_categoria_deporte"]').val() == 10){

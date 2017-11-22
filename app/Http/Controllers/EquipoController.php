@@ -211,7 +211,7 @@ class EquipoController extends BaseController
             if($categoria==1 && ($edad_h <11 || $edad_h >12)){
                 return response()->json(['estado' => 'repetido', 'errors' => 'El participante no cumple con la edad para esta categoria solo tiene: '.$edad_h.' años']);
             }
-            if($categoria==2 && ($edad_h <11 || $edad_h >12)){
+            if($categoria==2 && ($edad_h <10 || $edad_h >12)){
                 return response()->json(['estado' => 'repetido', 'errors' => 'El participante no cumple con la edad para esta categoria solo tiene: '.$edad_h.' años']);
             }
             if($categoria==3 && ($edad_h <11 || $edad_h >13)){
